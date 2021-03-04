@@ -1,0 +1,142 @@
+{
+  "data": {
+    "dataList": [
+      {
+        "conn_scr_num": "企业法人",
+        "curr_hold_num": 0.0,
+        "hold_wght_rati": 16.2941108,
+        "ins_fn": "华龙证券股份有限公司",
+        "ins_num": "63dc328a-9b44-42fd-b7db-425ed833878c",
+        "is_his": 0,
+        "paid_amt": 0.0,
+        "shah_name": "甘肃金融控股集团有限公司",
+        "shah_num": "7759dfde-f5cd-4918-93be-59d05bb950b2",
+        "shr_type": null,
+        "sscr_amt": 103226.3614
+      },
+      {
+        "conn_scr_num": "企业法人",
+        "curr_hold_num": 0.0,
+        "hold_wght_rati": 7.89241749,
+        "ins_fn": "华龙证券股份有限公司",
+        "ins_num": "63dc328a-9b44-42fd-b7db-425ed833878c",
+        "is_his": 0,
+        "paid_amt": 0.0,
+        "shah_name": "山东省国有资产投资控股有限公司",
+        "shah_num": "8dfe37d9-76e3-45a5-b409-33921fed1a11",
+        "shr_type": null,
+        "sscr_amt": 50000.0
+      },
+      {
+        "conn_scr_num": "企业法人",
+        "curr_hold_num": 0.0,
+        "hold_wght_rati": 6.31393399,
+        "ins_fn": "华龙证券股份有限公司",
+        "ins_num": "63dc328a-9b44-42fd-b7db-425ed833878c",
+        "is_his": 0,
+        "paid_amt": 0.0,
+        "shah_name": "浙江永利实业集团有限公司",
+        "shah_num": "4f5ae3f7-ba23-4e1e-9748-554108c241dd",
+        "shr_type": null,
+        "sscr_amt": 40000.0
+      },
+      {
+        "conn_scr_num": "企业法人",
+        "curr_hold_num": 0.0,
+        "hold_wght_rati": 6.02474617,
+        "ins_fn": "华龙证券股份有限公司",
+        "ins_num": "63dc328a-9b44-42fd-b7db-425ed833878c",
+        "is_his": 0,
+        "paid_amt": 0.0,
+        "shah_name": "甘肃省公路航空旅游投资集团有限公司",
+        "shah_num": "693b2e0c-7fd2-4c6e-928d-45b54fcd4273",
+        "shr_type": null,
+        "sscr_amt": 38167.9389
+      },
+      {
+        "conn_scr_num": "企业法人",
+        "curr_hold_num": 0.0,
+        "hold_wght_rati": 5.92989685,
+        "ins_fn": "华龙证券股份有限公司",
+        "ins_num": "63dc328a-9b44-42fd-b7db-425ed833878c",
+        "is_his": 0,
+        "paid_amt": 0.0,
+        "shah_name": "甘肃省国有资产投资集团有限公司",
+        "shah_num": "e800a120-7a4a-4a24-891a-ffce3c322a47",
+        "shr_type": null,
+        "sscr_amt": 37567.05
+      },
+      {
+        "conn_scr_num": "合伙企业",
+        "curr_hold_num": 0.0,
+        "hold_wght_rati": 4.64318813,
+        "ins_fn": "华龙证券股份有限公司",
+        "ins_num": "63dc328a-9b44-42fd-b7db-425ed833878c",
+        "is_his": 0,
+        "paid_amt": 0.0,
+        "shah_name": "广西西瑞添富投资管理中心（有限合伙）",
+        "shah_num": "421f4db3-cf0c-4047-aef9-b5cacda508ab",
+        "shr_type": null,
+        "sscr_amt": 29415.5
+      },
+      {
+        "conn_scr_num": "企业法人",
+        "curr_hold_num": 0.0,
+        "hold_wght_rati": 4.12368838,
+        "ins_fn": "华龙证券股份有限公司",
+        "ins_num": "63dc328a-9b44-42fd-b7db-425ed833878c",
+        "is_his": 0,
+        "paid_amt": 0.0,
+        "shah_name": "广西远辰投资集团有限公司",
+        "shah_num": "176cad72-7d95-4362-942f-41510c5e6585",
+        "shr_type": null,
+        "sscr_amt": 26124.368
+      },
+      {
+        "conn_scr_num": "企业法人",
+        "curr_hold_num": 0.0,
+        "hold_wght_rati": 3.61484769,
+        "ins_fn": "华龙证券股份有限公司",
+        "ins_num": "63dc328a-9b44-42fd-b7db-425ed833878c",
+        "is_his": 0,
+        "paid_amt": 0.0,
+        "shah_name": "青岛金石灏汭投资有限公司",
+        "shah_num": "707a306b-68a4-4b20-8929-62b67fb347df",
+        "shr_type": null,
+        "sscr_amt": 22900.7633
+      },
+      {
+        "conn_scr_num": "企业法人",
+        "curr_hold_num": 0.0,
+        "hold_wght_rati": 2.72441706,
+        "ins_fn": "华龙证券股份有限公司",
+        "ins_num": "63dc328a-9b44-42fd-b7db-425ed833878c",
+        "is_his": 0,
+        "paid_amt": 0.0,
+        "shah_name": "晶龙实业集团有限公司",
+        "shah_num": "049dfce6-ba8f-413f-8fa0-a7fca1da8faf",
+        "shr_type": null,
+        "sscr_amt": 17259.712
+      },
+      {
+        "conn_scr_num": "企业法人",
+        "curr_hold_num": 0.0,
+        "hold_wght_rati": 2.57378317,
+        "ins_fn": "华龙证券股份有限公司",
+        "ins_num": "63dc328a-9b44-42fd-b7db-425ed833878c",
+        "is_his": 0,
+        "paid_amt": 0.0,
+        "shah_name": "甘肃省电力投资集团有限责任公司",
+        "shah_num": "261f138c-44cf-4e4a-8285-a994f88ae8f9",
+        "shr_type": null,
+        "sscr_amt": 16305.417
+      }
+    ],
+    "pageNum": 1,
+    "pageSize": 10,
+    "size": 10,
+    "total": 114
+  },
+  "message": "success",
+  "statusCode": 100000
+}
