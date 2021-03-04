@@ -27,5 +27,5 @@ def request_by_ins_num(ins_num=test_ins_num):
 
     response = requests.request("POST", url, headers=headers, data=payload, files=files)
     assert response.status_code == 200
-    print(response.json())
+    # print(response.json())
     return response

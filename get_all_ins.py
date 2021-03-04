@@ -21,17 +21,21 @@ class Institution:
         self.shareholder = list()
 
     def get_shareholder(self):
+        if not self.ins_num:
+            return
         res = request_by_ins_num(self.ins_num)
-        total_shareholder = res.json().get("data", {}).get("total", 0)
+        res_data = res.json().get("data", {})
+        total_shareholder = res_data.get("total", 0)
         if total_shareholder == 0:
             return
-        data_list = res.json().get("data", {}).get("dataList", [])
+        data_list = res_data.get("dataList", [])
         for item in data_list:
             shah_name = item.get("shah_name", "")
             shah_num = item.get("shah_num", "")
             hold_ratio = item.get("hold_wght_rati", 0.0)
             sub_shareholder = Institution(shah_name, shah_num, hold_ratio)
             sub_shareholder.get_shareholder()
+            print(sub_shareholder)
             self.shareholder.append(sub_shareholder)
 
 
