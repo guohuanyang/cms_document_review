@@ -9,6 +9,8 @@
 # -------------------------------------------------------------------------------
 from test_api import request_by_ins_num
 from queue import Queue
+import json
+
 task_queue = Queue()
 
 
@@ -67,9 +69,18 @@ def bfs_ins():
     return founded_shareholders
 
 
+def obj2dict(ins_list):
+    return [ins.__dict__ for ins in ins_list]
+
+
 if __name__ == '__main__':
     test_code = 'cea37295-334a-43a5-9db8-89731f99b096'
     test_obj = Institution('test', test_code, 999)
     task_queue.put(test_obj)
     shareholder_list = bfs_ins()
-    print(shareholder_list)
+    print(len(shareholder_list))
+    result = obj2dict(shareholder_list)
+    json_result = json.dumps(result)
+    with open('result', 'w') as f:
+        f.write(json_result)
+    print(result)
