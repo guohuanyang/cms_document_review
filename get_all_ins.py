@@ -31,6 +31,7 @@ def bfs_ins():
     founded_shareholder_ins = list()
     while not task_queue.empty():
         institution = task_queue.get()
+        print(institution)
         if not institution.ins_num:
             institution.status = True
             institution.msg = 'ins_num不能为空'
