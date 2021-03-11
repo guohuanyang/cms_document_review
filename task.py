@@ -13,11 +13,13 @@ from queue import Queue
 
 import cn2an
 
-from get_all_ins import Institution, bfs_ins, obj2dict
+from get_all_ins import Institution, obj2dict
 from fn_api import request_by_ins_num
 from config import json_path
 from tree_resource import get_root
 from write_excel import WriteExcel
+
+task_queue = Queue()
 
 
 class Shareholder_Due_Diligence:
@@ -35,22 +37,20 @@ class Shareholder_Due_Diligence:
         self.dfs_res = dfs_res or self.bfs2dfs()
 
     def set_ins_name(self):
+        ins_name = ''
         print('未传入机构名称,开始查询机构名称')
-        res = request_by_ins_num(self.ins_num)
-        res_data = res.json().get("data", {})
-        if res_data.get("total", 0) == 0:
+        data_list = request_by_ins_num(self.ins_num)
+        if len(data_list) == 0:
             self.msg = '搜索不到股东信息'
-        data_list = res_data.get("dataList", [])
         if data_list:
             ins_name = data_list[0].get("ins_fn", "")
-            self.ins_name = ins_name
         print('查询机构名称完成')
+        return ins_name
 
     def get_bfs_res(self):
-        ins_obj = Institution(self.ins_name, self.ins_name, self.ratio)
-        task_queue = Queue()
+        ins_obj = Institution(self.ins_name, self.ins_num, self.ratio)
         task_queue.put(ins_obj)
-        shareholder_list = bfs_ins(task_queue)
+        shareholder_list = bfs_ins()
         bfs_result = obj2dict(shareholder_list)
         if not bfs_result:
             return []
@@ -95,6 +95,45 @@ class Shareholder_Due_Diligence:
         print('写表格完成')
         excel_obj.save()
         print('保存excel完成')
+
+
+def bfs_ins():
+    founded_shareholders = list()
+    founded_shareholder_ins = list()
+    while not task_queue.empty():
+        institution = task_queue.get()
+        print(institution.ins_name)
+        if not institution.ins_num:
+            institution.status = True
+            institution.msg = 'ins_num不能为空'
+            continue
+        if institution.ins_num in founded_shareholder_ins:
+            institution.msg = '已在前面的层级发现,加入到搜索结果,但不再搜索股东'
+            institution.status = True
+            founded_shareholders.append(institution)
+            continue
+
+        founded_shareholders.append(institution)
+        founded_shareholder_ins.append(institution.ins_num)
+
+        data_list = request_by_ins_num(institution.ins_num)
+        if len(data_list) == 0:
+            institution.msg = '搜索不到股东信息'
+            institution.status = True
+            continue
+
+        for item in data_list:
+            shah_name = item.get("shah_name", "")
+            shah_num = item.get("shah_num", "")
+            hold_ratio = item.get("hold_wght_rati", 0.0)
+
+            sub_shareholder = Institution(
+                shah_name, shah_num, hold_ratio,
+                institution.level+1, institution.ins_num)
+            task_queue.put(sub_shareholder)
+
+        institution.status = True
+    return founded_shareholders
 
 
 def test_case():
