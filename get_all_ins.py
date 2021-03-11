@@ -10,6 +10,8 @@
 from test_api import request_by_ins_num
 from queue import Queue
 import json
+from tree_resource import *
+from write_excel import *
 
 task_queue = Queue()
 
@@ -18,14 +20,24 @@ class Institution:
     """
     机构信息
     """
-    def __init__(self, name, code, ratio, level=0, parent_ins_num=None, status=False, msg=''):
-        self.ins_name = name
-        self.ins_num = code
+    def __init__(self, ins_name, ins_num, ratio, level=0, parent_ins_num=None, status=False, msg=''):
+        self.ins_name = ins_name
+        self.ins_num = ins_num
         self.ratio = ratio
         self.level = level
         self.parent_ins_num = parent_ins_num
         self.status = status
         self.msg = msg
+
+    def set_name(self):
+        res = request_by_ins_num(self.ins_num)
+        res_data = res.json().get("data", {})
+        if res_data.get("total", 0) == 0:
+            self.msg = '搜索不到股东信息'
+        data_list = res_data.get("dataList", [])
+        if data_list:
+            ins_name = data_list[0].get("ins_fn", "")
+            self.ins_name = ins_name
 
 
 def bfs_ins():
@@ -33,7 +45,7 @@ def bfs_ins():
     founded_shareholder_ins = list()
     while not task_queue.empty():
         institution = task_queue.get()
-        print(institution)
+        print(institution.ins_name)
         if not institution.ins_num:
             institution.status = True
             institution.msg = 'ins_num不能为空'
@@ -75,7 +87,7 @@ def obj2dict(ins_list):
 
 if __name__ == '__main__':
     test_code = 'cea37295-334a-43a5-9db8-89731f99b096'
-    test_obj = Institution('test', test_code, 999)
+    test_obj = Institution('test', test_code, 100)
     task_queue.put(test_obj)
     shareholder_list = bfs_ins()
     print(len(shareholder_list))

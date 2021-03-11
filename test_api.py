@@ -20,7 +20,7 @@ def request_by_ins_num(ins_num=test_ins_num):
     payload={
         'insNum': ins_num,
         'pageNum': 1,
-        'pageSize': 200,
+        'pageSize': 1000,
         # 'isHis': ''
     }
     files=[]
