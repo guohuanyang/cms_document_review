@@ -22,7 +22,7 @@ dev_config = {
         }
     },
     'product': {
-        "host": '172.253.33.12:8080',
+        "host": '172.16.10.2:8080',
         "access_token": 'Basic ZGRkc3VzZXI6QmJzZHlpY2hhbzEyMjQhQCMj',
         "headers": {
             'uap-request-id': '1553ef50-dfd3-11e8-879d-00155d462155',
