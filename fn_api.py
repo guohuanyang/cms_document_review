@@ -39,7 +39,3 @@ def request_by_ins_num(ins_num):
         data_list.extend(tmp_data_list)
         page_num += 1
     return data_list
-
-
-    # print(response.json())
-    return response
