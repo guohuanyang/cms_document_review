@@ -111,7 +111,7 @@ def start_task(ins_num):
 
 
 if __name__ == '__main__':
-    # import sys
-    # query_in_num = sys.argv[1]
-    # start_task(query_in_num)
-    test_case()
+    import sys
+    query_in_num = sys.argv[1]
+    start_task(query_in_num)
+    # test_case()

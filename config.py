@@ -12,8 +12,7 @@ environment = 'test'
 dev_config = {
     'test': {
         "host": '172.253.33.12:8080',
-        "access_token": 'Basic ZGRkc3VzZXI6QmJzZHlpY2hhbzEyMjQhQCMj',
-        "test_ins_num": "cea37295-334a-43a5-9db8-89731f99b096",
+        "access_token": 'Basic bGlxaXVqaW46bGlxaXVqaW5AUVdlckAxMjM=',
         "headers": {
             'uap-server-type': '667',
             'uap-request-no': '1003',
@@ -24,7 +23,6 @@ dev_config = {
     'product': {
         "host": '172.253.33.12:8080',
         "access_token": 'Basic ZGRkc3VzZXI6QmJzZHlpY2hhbzEyMjQhQCMj',
-        "test_ins_num": "cea37295-334a-43a5-9db8-89731f99b096",
         "headers": {
             'uap-server-type': '667',
             'uap-request-no': '1003',
