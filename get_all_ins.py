@@ -7,13 +7,9 @@
 # Date:         2021/3/3
 # Email         guohuanyang@datagrand.com
 # -------------------------------------------------------------------------------
-from test_api import request_by_ins_num
-from queue import Queue
+from fn_api import request_by_ins_num
 import json
-from tree_resource import *
-from write_excel import *
-
-task_queue = Queue()
+from queue import Queue
 
 
 class Institution:
@@ -29,18 +25,8 @@ class Institution:
         self.status = status
         self.msg = msg
 
-    def set_name(self):
-        res = request_by_ins_num(self.ins_num)
-        res_data = res.json().get("data", {})
-        if res_data.get("total", 0) == 0:
-            self.msg = '搜索不到股东信息'
-        data_list = res_data.get("dataList", [])
-        if data_list:
-            ins_name = data_list[0].get("ins_fn", "")
-            self.ins_name = ins_name
 
-
-def bfs_ins():
+def bfs_ins(task_queue):
     founded_shareholders = list()
     founded_shareholder_ins = list()
     while not task_queue.empty():
@@ -87,12 +73,13 @@ def obj2dict(ins_list):
 
 if __name__ == '__main__':
     test_code = 'cea37295-334a-43a5-9db8-89731f99b096'
+    test_task_queue = Queue()
     test_obj = Institution('test', test_code, 100)
-    task_queue.put(test_obj)
-    shareholder_list = bfs_ins()
+    test_task_queue.put(test_obj)
+    shareholder_list = bfs_ins(test_task_queue)
     print(len(shareholder_list))
     result = obj2dict(shareholder_list)
     json_result = json.dumps(result)
-    with open('result', 'w') as f:
+    with open('result.json', 'w') as f:
         f.write(json_result)
     print(result)

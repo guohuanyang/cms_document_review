@@ -8,14 +8,8 @@
 # Email         guohuanyang@datagrand.com
 # -------------------------------------------------------------------------------
 import json
-
-json_result_path = 'result.json'
-
-
-class Node:
-    def __init__(self, obj):
-        self.root = obj
-        self.children = list()
+import os
+from config import json_path as json_path_dir
 
 
 def read_json(json_path):
@@ -38,10 +32,7 @@ def init_root(json_data):
     return root
 
 
-found_ins_num = []
-
-
-def dfs(root, json_data, level=1):
+def dfs(root, json_data, found_ins_num: list, level=1):
     root_ins_num = root['data']['ins_num']
     level_data = [x for x in json_data if x['level'] == level and x['parent_ins_num'] == root_ins_num]
     if not level_data:
@@ -54,14 +45,20 @@ def dfs(root, json_data, level=1):
                 'data': child_data,
                 'children': list()
             }
-            print(child)
-            dfs(child, json_data, level+1)
+            dfs(child, json_data, found_ins_num, level+1)
             root['children'].append(child)
 
 
 def get_root(json_data):
     root = init_root(json_data)
-    dfs(root, json_data, 1)
+    found_ins_num = []
+    dfs(root, json_data, found_ins_num, 1)
+    json_root = json.dumps(root)
+    if not os.path.exists(json_path_dir):
+        os.mkdir(json_path_dir)
+    json_result_path = '%s/%s' % (json_path_dir, 'dfs_result.json')
+    with open(json_result_path, 'w')as f:
+        f.write(json_root)
     return root
 
 
@@ -104,11 +101,11 @@ def gen_dict_data(json_data):
 
 
 if __name__ == '__main__':
-    t = read_json(json_result_path)
+    t = read_json('result.json')
     test_root = get_root(t)
     root_str = json.dumps(test_root)
-    with open('dfs.json', 'w')as f:
-        f.write(root_str)
+    with open('dfs.json', 'w')as ff:
+        ff.write(root_str)
     print(test_root)
 
     # res = add_cols_num(t)
