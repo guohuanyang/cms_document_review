@@ -18,6 +18,7 @@ from fn_api import request_by_ins_num
 from config import json_path
 from tree_resource import get_root
 from write_excel import WriteExcel
+from write_word import main as write_word_template
 
 task_queue = Queue()
 
@@ -29,7 +30,7 @@ class Shareholder_Due_Diligence:
     def __init__(self, ins_num, ins_name=None, ratio=0, bfs_res='', dfs_res='', header=''):
         self.ins_num = ins_num
         self.ins_name = ins_name or self.set_ins_name()
-        self.ratio = ratio
+        self.ratio = "%.2f" % ratio
         self.msg = ''
         self.header = header
         self.level = 0
@@ -142,15 +143,22 @@ def test_case():
     test_ins_num = 'cea37295-334a-43a5-9db8-89731f99b096'
     instance = Shareholder_Due_Diligence(test_ins_num, ins_name='test', bfs_res=test_json)
     instance.write_data_excel()
+    write_word_template(instance.dfs_res)
 
 
 def start_task(ins_num):
     instance = Shareholder_Due_Diligence(ins_num)
     instance.write_data_excel()
+    write_word_template(instance.dfs_res)
 
 
 if __name__ == '__main__':
     import sys
-    query_in_num = sys.argv[1]
-    start_task(query_in_num)
+    if len(sys.argv) == 2:
+        query_in_num = sys.argv[1]
+        # query_in_num = '408c5e9f-c128-430e-b38b-02c9094b673b'
+        start_task(query_in_num)
+    else:
+        print('缺少输入机构编码')
     # test_case()
+    print('任务结束')

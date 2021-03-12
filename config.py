@@ -37,3 +37,5 @@ dev_config = {
 global_conf = dev_config[environment]
 
 json_path = './json_result'
+
+dir_name = 'result'

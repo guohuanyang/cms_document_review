@@ -11,8 +11,7 @@ import os
 from datetime import datetime
 
 import openpyxl
-
-dir_name = 'result'
+from config import dir_name
 sheet = []
 
 
